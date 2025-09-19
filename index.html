@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <!-- ================= SEO & Meta ================= -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Ifdal Lisyukri — Web Developer. Portfolio berisi proyek: Finance Tracker, Photobox App, Inventory System, dan lainnya."
+    />
+    <meta name="author" content="Ifdal Lisyukri" />
+    <title>Ifdal Lisyukri — Web Developer</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome (ikon) -->
+    <script
+      src="https://kit.fontawesome.com/6b1f9b0f9a.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- ======= Styles (embedded for single-file deliverable) ======= -->
+    <style>
+      :root {
+        --bg: #fafafa;
+        --card: #ffffff;
+        --muted: #6b7280;
+        --text: #111827;
+        --accent: #2643a6; /* royal blue accent */
+        --accent-2: #c9a24a; /* gold accent (used subtly) */
+        --glass: rgba(255, 255, 255, 0.6);
+        --shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+        --radius: 12px;
+        --max-width: 1100px;
+      }
+      /* Dark mode variables (will be toggled by JS) */
+      :root[data-theme="dark"] {
+        --bg: #0b1020;
+        --card: #0f1724;
+        --muted: #9ca3af;
+        --text: #e6eef8;
+        --accent: #2b6be4;
+        --glass: rgba(255, 255, 255, 0.03);
+        --shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        background: linear-gradient(180deg, var(--bg), rgba(0, 0, 0, 0));
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.6;
+        scroll-behavior: smooth;
+      }
+
+      /* Page layout */
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      /* Navbar */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        backdrop-filter: blur(6px);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.6),
+          rgba(255, 255, 255, 0.3)
+        );
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      }
+      :root[data-theme="dark"] header {
+        background: linear-gradient(
+          180deg,
+          rgba(10, 14, 22, 0.6),
+          rgba(10, 14, 22, 0.3)
+        );
+        border-bottom-color: rgba(255, 255, 255, 0.04);
+      }
+      .nav-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 14px 20px;
+      }
+      .brand {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .brand .logo {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        box-shadow: var(--shadow);
+      }
+      .brand .name {
+        font-weight: 700;
+        font-size: 16px;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 18px;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+      }
+      nav a {
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      nav a:hover {
+        color: var(--accent);
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 10px 14px;
+        border-radius: 10px;
+        background: var(--accent);
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        box-shadow: var(--shadow);
+      }
+      .btn-outline {
+        background: transparent;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        padding: 9px 12px;
+        border-radius: 10px;
+        color: var(--text);
+      }
+
+      /* Hero */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 64px 16px 48px;
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        gap: 28px;
+        align-items: center;
+        max-width: var(--max-width);
+        margin: 0 auto;
+      }
+      .hero-left h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+      }
+      .hero-left p {
+        color: var(--muted);
+        margin-bottom: 18px;
+        font-size: 16px;
+      }
+      .cta-group {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .profile-card {
+        background: linear-gradient(
+          180deg,
+          var(--card),
+          rgba(255, 255, 255, 0.02)
+        );
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        text-align: center;
+      }
+      .profile-card img {
+        width: 100%;
+        border-radius: 12px;
+        object-fit: cover;
+        height: 320px;
+      }
+
+      /* About */
+      .about {
+        padding: 48px 16px;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+      .about-photo {
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+      .about-photo img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .about-desc p {
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      /* Skills */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+      .skill-card {
+        background: var(--card);
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+      }
+      .skill-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+      .progress {
+        height: 10px;
+        background: rgba(0, 0, 0, 0.06);
+        border-radius: 999px;
+        overflow: hidden;
+      }
+      .progress > span {
+        display: block;
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        border-radius: 999px;
+        transition: width 900ms ease;
+      }
+
+      /* Portfolio */
+      .portfolio-filter {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+      }
+      .filter-btn {
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        background: transparent;
+        cursor: pointer;
+      }
+      .filter-btn.active {
+        background: var(--accent);
+        color: white;
+        border-color: transparent;
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 18px;
+      }
+      .project {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        background: var(--card);
+        box-shadow: var(--shadow);
+        transition: transform 0.25s ease;
+      }
+      .project img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+      }
+      .project .meta {
+        padding: 12px;
+      }
+      .project h4 {
+        margin: 0 0 6px;
+      }
+      .project p {
+        color: var(--muted);
+        font-size: 14px;
+        margin: 0;
+      }
+      .project .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.4)
+        );
+        opacity: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 16px;
+        transition: opacity 0.22s;
+      }
+      .project:hover {
+        transform: translateY(-6px);
+      }
+      .project:hover .overlay {
+        opacity: 1;
+      }
+      .overlay .links {
+        display: flex;
+        gap: 10px;
+      }
+
+      /* Contact */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 20px;
+      }
+      .contact-form {
+        background: var(--card);
+        padding: 18px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+      }
+      .form-row {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+      }
+      label {
+        font-size: 13px;
+        margin-bottom: 6px;
+        color: var(--muted);
+      }
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        background: transparent;
+        color: var(--text);
+      }
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      .socials {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      footer {
+        padding: 22px;
+        text-align: center;
+        color: var(--muted);
+        margin-top: 32px;
+      }
+
+      /* Responsive */
+      @media (max-width: 980px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 40px 14px;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        nav ul {
+          display: none;
+        }
+        .mobile-nav-toggle {
+          display: inline-flex;
+        }
+      }
+      /* small niceties */
+      .tag {
+        display: inline-block;
+        padding: 6px 8px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.04);
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .small {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .center {
+        text-align: center;
+      }
+      /* smooth reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .reveal.show {
+        opacity: 1;
+        transform: none;
+      }
+      /* Dark mode toggle */
+      .toggle {
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 8px;
+        background: transparent;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Particle canvas (background subtle) -->
+    <canvas
+      id="canvas-bg"
+      style="position: fixed; inset: 0; z-index: -1; pointer-events: none"
+    ></canvas>
+
+    <!-- ===== HEADER / NAV ===== -->
+    <header>
+      <div class="nav-wrap">
+        <div class="brand">
+          <div class="logo">IL</div>
+          <div>
+            <div class="name">Ifdal Lisyukri</div>
+            <div class="small">Web Developer</div>
+          </div>
+        </div>
+
+        <nav aria-label="Main Navigation">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div style="display: flex; gap: 10px; align-items: center">
+          <button id="downloadCV" class="btn" title="Download CV">
+            Download CV
+          </button>
+          <button id="themeToggle" class="toggle" aria-label="Toggle dark mode">
+            <i class="fa fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <main id="home">
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-left">
+          <h1 id="hero-heading">
+            Hi, I'm <span style="color: var(--accent)">Ifdal Lisyukri</span>
+          </h1>
+          <p>
+            Web Developer — S1 Teknik Informatika, Universitas Negeri Padang.
+            Saya membangun aplikasi web responsif, UI yang bersih, dan sistem
+            back-end sederhana untuk kebutuhan bisnis/operasional.
+          </p>
+          <div class="cta-group">
+            <a class="btn" href="#contact">Contact Me</a>
+            <a class="btn-outline" id="cvLink" href="#" download>Download CV</a>
+          </div>
+          <div style="margin-top: 14px" class="small">
+            Location: Padang • Email:
+            <a href="mailto:lisyukri.ifdal@gmail.com"
+              >lisyukri.ifdal@gmail.com</a
+            >
+            • Phone: 082210389468
+          </div>
+        </div>
+
+        <aside class="profile-card" aria-label="Profile card">
+          <!-- replace src with your professional photo -->
+          <img
+            src="PasFotoKotak.jpg"
+            alt="Foto Ifdal Lisyukri — Web Developer"
+          />
+          <div style="margin-top: 12px">
+            <div style="font-weight: 700">Ifdal Lisyukri</div>
+            <div class="small">
+              S1 Teknik Informatika — Universitas Negeri Padang
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ===== ABOUT ===== -->
+      <section id="about" class="about reveal">
+        <div class="container">
+          <h2>About Me</h2>
+          <div class="about-grid" style="margin-top: 18px">
+            <div class="about-photo">
+              <img src="PasFoto.jpg" alt="Foto Ifdal Lisyukri" />
+            </div>
+            <div class="about-desc">
+              <p>
+                I am a graduate of S1 Teknik Informatika, IPK 3.58 (Universitas
+                Negeri Padang). I have interned at the Subdistrict Office
+                (administration) and PT Semen Padang (IT unit) where I built web
+                apps for inventory & request management. I enjoy building clean,
+                maintainable web applications and learning new technologies.
+              </p>
+
+              <ul
+                style="
+                  margin-top: 12px;
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                  gap: 8px;
+                "
+              >
+                <li>
+                  <strong>Education:</strong> S1 Teknik Informatika —
+                  Universitas Negeri Padang
+                </li>
+                <li><strong>IPK:</strong> 3.58</li>
+                <li>
+                  <strong>Experience:</strong> Magang IT (PT Semen Padang),
+                  Admin (Kantor Camat Sutera)
+                </li>
+                <li><strong>Location:</strong> Padang, Indonesia</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SKILLS ===== -->
+      <section id="skills" class="reveal" style="padding: 48px 16px">
+        <div class="container">
+          <h2>Skills</h2>
+          <div style="height: 14px"></div>
+          <div class="skills-grid">
+            <!-- skill card example -->
+            <div class="skill-card">
+              <div class="skill-title">
+                <div>HTML & CSS</div>
+                <div class="small">90%</div>
+              </div>
+              <div class="progress" data-value="90"><span></span></div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-title">
+                <div>JavaScript</div>
+                <div class="small">85%</div>
+              </div>
+              <div class="progress" data-value="85"><span></span></div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-title">
+                <div>Node.js & Express</div>
+                <div class="small">78%</div>
+              </div>
+              <div class="progress" data-value="78"><span></span></div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-title">
+                <div>PHP & MySQL</div>
+                <div class="small">80%</div>
+              </div>
+              <div class="progress" data-value="80"><span></span></div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-title">
+                <div>UI / UX & Design</div>
+                <div class="small">72%</div>
+              </div>
+              <div class="progress" data-value="72"><span></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PROJECTS / PORTFOLIO ===== -->
+      <section id="projects" class="reveal" style="padding: 48px 16px">
+        <div class="container">
+          <h2>Projects</h2>
+
+          <div class="portfolio-filter" style="margin-top: 14px">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+            <button class="filter-btn" data-filter="mobile">Mobile</button>
+            <button class="filter-btn" data-filter="uiux">UI/UX</button>
+          </div>
+
+          <div class="projects-grid">
+            <!-- Project 1: Finance Tracker -->
+            <article class="project" data-category="web">
+              <img src="1.png" alt="Finance Tracker" />
+              <div class="meta">
+                <h4>Finance Tracker</h4>
+                <p>
+                  Personal finance tracker with monthly reports and Excel/PDF
+                  export.
+                </p>
+              </div>
+              <div class="overlay">
+                <div class="links">
+                  <a
+                    class="btn"
+                    href="https://finance-tracker-tawny-eight.vercel.app/"
+                    target="_blank"
+                    rel="noopener"
+                    >Live Demo</a
+                  >
+                  <a
+                    class="btn-outline"
+                    href="#"
+                    onclick="openModal(event, 'finance')"
+                    >Details</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 2: Photobox -->
+            <article class="project" data-category="web">
+              <img src="2.png" alt="Photobox App" />
+              <div class="meta">
+                <h4>Photobox App</h4>
+                <p>Web camera app with collage builder and download option.</p>
+              </div>
+              <div class="overlay">
+                <div class="links">
+                  <a
+                    class="btn"
+                    href="https://photobox-app.vercel.app/"
+                    target="_blank"
+                    rel="noopener"
+                    >Live Demo</a
+                  >
+                  <a
+                    class="btn-outline"
+                    href="#"
+                    onclick="openModal(event,'photobox')"
+                    >Details</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 3: Inventory (PT Semen Padang) -->
+            <article class="project" data-category="web">
+              <img src="3.png" alt="Inventory System" />
+              <div class="meta">
+                <h4>Inventory Management</h4>
+                <p>
+                  Web app for warehouse management & request workflows
+                  (internship project).
+                </p>
+              </div>
+              <div class="overlay">
+                <div class="links">
+                  <a
+                    class="btn-outline"
+                    href="#"
+                    onclick="openModal(event,'inventory')"
+                    >Details</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CONTACT ===== -->
+      <section id="contact" class="reveal" style="padding: 48px 16px">
+        <div class="container">
+          <h2>Contact</h2>
+          <div class="contact-grid" style="margin-top: 18px">
+            <form
+              class="contact-form"
+              id="contactForm"
+              onsubmit="return handleForm(event)"
+            >
+              <div class="form-row">
+                <label for="name">Nama</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  placeholder="Nama lengkap"
+                />
+              </div>
+              <div class="form-row">
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="email@domain.com"
+                />
+              </div>
+              <div class="form-row">
+                <label for="message">Pesan</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  placeholder="Tuliskan pesan singkat..."
+                ></textarea>
+              </div>
+              <div style="display: flex; gap: 10px; align-items: center">
+                <button type="submit" class="btn">Kirim Pesan</button>
+                <div class="small">atau hubungi via:</div>
+                <div class="socials">
+                  <a
+                    href="https://github.com/your-github"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="GitHub"
+                    ><i class="fab fa-github"></i
+                  ></a>
+                  <a
+                    href="https://www.linkedin.com/in/your-linkedin"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="LinkedIn"
+                    ><i class="fab fa-linkedin"></i
+                  ></a>
+                  <a
+                    href="https://instagram.com/your-instagram"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="Instagram"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </div>
+              </div>
+            </form>
+
+            <aside
+              style="
+                padding: 18px;
+                border-radius: 12px;
+                background: var(--card);
+                box-shadow: var(--shadow);
+              "
+            >
+              <h4>Info Kontak</h4>
+              <p class="small">Ifdal Lisyukri</p>
+              <p class="small">Padang, Indonesia</p>
+              <p class="small">
+                Email:
+                <a href="mailto:lisyukri.ifdal@gmail.com"
+                  >lisyukri.ifdal@gmail.com</a
+                >
+              </p>
+              <p class="small">HP: 082210389468</p>
+              <!-- Optional small map placeholder -->
+              <div
+                style="
+                  margin-top: 10px;
+                  background: linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.02),
+                    transparent
+                  );
+                  padding: 10px;
+                  border-radius: 8px;
+                "
+              >
+                <small class="small">Lokasi: Padang</small>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <div class="container">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              gap: 10px;
+              flex-wrap: wrap;
+            "
+          >
+            <div class="small">
+              &copy; <span id="year"></span> Ifdal Lisyukri — All rights
+              reserved.
+            </div>
+            <div style="display: flex; gap: 10px">
+              <a href="#" class="small">Privacy</a>
+              <a href="#" class="small">Terms</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- ===== Modal (Project Details) ===== -->
+    <div
+      id="modal"
+      style="
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(2, 6, 23, 0.6);
+        z-index: 120;
+      "
+    >
+      <div
+        style="
+          max-width: 880px;
+          width: 94%;
+          background: var(--card);
+          padding: 20px;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          position: relative;
+        "
+      >
+        <button
+          onclick="closeModal()"
+          style="
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            border: none;
+            background: transparent;
+            font-size: 18px;
+            cursor: pointer;
+          "
+        >
+          &times;
+        </button>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <!-- ===== JS (behavior & animation) ===== -->
+    <script>
+      // ================= Utilities =================
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+      // Set current year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Smooth scroll nav links (already default but enhance)
+      $$('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          // only smooth within page
+          const href = a.getAttribute("href");
+          if (href.startsWith("#")) {
+            e.preventDefault();
+            document
+              .querySelector(href)
+              .scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      // ========= Dark mode toggle =========
+      const themeToggle = document.getElementById("themeToggle");
+      const root = document.documentElement;
+      const savedTheme =
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light");
+      root.setAttribute("data-theme", savedTheme);
+
+      function updateToggleIcon() {
+        themeToggle.innerHTML =
+          root.getAttribute("data-theme") === "dark"
+            ? '<i class="fa fa-sun"></i>'
+            : '<i class="fa fa-moon"></i>';
+      }
+      updateToggleIcon();
+
+      themeToggle.addEventListener("click", () => {
+        const next =
+          root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+        updateToggleIcon();
+      });
+
+      // ========= Skills progress animation on reveal =========
+      const progressEls = $$(".progress");
+      function animateProgress() {
+        progressEls.forEach((el) => {
+          const val = el.dataset.value || 0;
+          const span = el.querySelector("span");
+          span.style.width = val + "%";
+        });
+      }
+
+      // ========= Scroll reveal (simple) =========
+      const revealElements = $$(".reveal");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("show");
+          });
+        },
+        { threshold: 0.12 }
+      );
+      revealElements.forEach((el) => {
+        io.observe(el);
+      });
+      // animate progress when skills section visible
+      const skillsSection = document.getElementById("skills");
+      const skillsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) animateProgress();
+          });
+        },
+        { threshold: 0.2 }
+      );
+      if (skillsSection) skillsObserver.observe(skillsSection);
+
+      // ========= Portfolio filter logic =========
+      const filterBtns = $$(".filter-btn");
+      const projects = $$(".project");
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const f = btn.dataset.filter;
+          projects.forEach((p) => {
+            if (f === "all" || p.dataset.category === f) p.style.display = "";
+            else p.style.display = "none";
+          });
+        });
+      });
+
+      // ========= Modal details =========
+      function openModal(e, id) {
+        e.preventDefault();
+        const modal = $("#modal");
+        const content = $("#modalContent");
+        if (id === "finance") {
+          content.innerHTML = `
+          <h3>Finance Tracker</h3>
+          <p>Aplikasi pencatatan keuangan yang memungkinkan input transaksi, filter per bulan, serta ekspor PDF/Excel. Teknologi: React.js (front-end), jsPDF, XLSX. <br><strong>Live:</strong> <a href="https://finance-tracker-tawny-eight.vercel.app/" target="_blank">finance-tracker-tawny-eight.vercel.app</a></p>
+          <ul><li>Fitur: input transaksi, laporan bulanan, export PDF/Excel, responsive UI</li></ul>
+        `;
+        } else if (id === "photobox") {
+          content.innerHTML = `
+          <h3>Photobox App</h3>
+          <p>Aplikasi kamera web untuk mengambil foto, menyusun kolase, dan mengunduh hasilnya. Teknologi: Vanilla JS, Canvas API. <br><strong>Live:</strong> <a href="https://photobox-app.vercel.app/" target="_blank">photobox-app.vercel.app</a></p>
+        `;
+        } else if (id === "inventory") {
+          content.innerHTML = `
+          <h3>Inventory Management (Magang: PT Semen Padang)</h3>
+          <p>Sistem manajemen gudang & permintaan barang dengan fitur tracking barang masuk/keluar, filter lokasi, dan role-based access. Teknologi: PHP, MySQL, Bootstrap.</p>
+        `;
+        } else {
+          content.innerHTML = `<p>Detail proyek tidak tersedia.</p>`;
+        }
+        modal.style.display = "flex";
+      }
+      function closeModal() {
+        $("#modal").style.display = "none";
+      }
+
+      // close modal on outside click
+      $("#modal").addEventListener("click", (e) => {
+        if (e.target.id === "modal") closeModal();
+      });
+
+      // ========= Contact form handler (frontend only) =========
+      function handleForm(e) {
+        e.preventDefault();
+        const name = $("#name").value.trim();
+        const email = $("#email").value.trim();
+        const message = $("#message").value.trim();
+        if (!name || !email || !message) {
+          alert("Mohon lengkapi semua bagian.");
+          return false;
+        }
+
+        // Provide mailto fallback so recruiter can still send via email client
+        const subject = encodeURIComponent("Contact via Portfolio Website");
+        const body = encodeURIComponent(
+          `Nama: ${name}\nEmail: ${email}\n\n${message}`
+        );
+        window.location.href = `mailto:lisyukri.ifdal@gmail.com?subject=${subject}&body=${body}`;
+        return false;
+      }
+
+      // ========= Download CV button (sample) =========
+      $("#downloadCV").addEventListener("click", () => {
+        // if you have CV file, set the href accordingly. For demo, link to mailto.
+        window.location.href =
+          "mailto:lisyukri.ifdal@gmail.com?subject=Request%20CV";
+      });
+
+      // ========= Simple particle background (lightweight) =========
+      (function () {
+        const canvas = document.getElementById("canvas-bg");
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        let w = (canvas.width = innerWidth);
+        let h = (canvas.height = innerHeight);
+        const particles = [];
+        const particleCount = Math.round((w * h) / 100000); // scale with screen
+        for (let i = 0; i < particleCount; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: Math.random() * 1.2 + 0.3,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3,
+            alpha: Math.random() * 0.6 + 0.05,
+          });
+        }
+        function resize() {
+          w = canvas.width = innerWidth;
+          h = canvas.height = innerHeight;
+        }
+        addEventListener("resize", resize);
+
+        function tick() {
+          ctx.clearRect(0, 0, w, h);
+          for (const p of particles) {
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0) p.x = w;
+            if (p.x > w) p.x = 0;
+            if (p.y < 0) p.y = h;
+            if (p.y > h) p.y = 0;
+            ctx.beginPath();
+            ctx.fillStyle = `rgba(100,116,139,${p.alpha})`;
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          requestAnimationFrame(tick);
+        }
+        tick();
+      })();
+
+      // Reveal initially visible
+      document.addEventListener("DOMContentLoaded", () => {
+        // add slight delay for nicer effect
+        setTimeout(() => {
+          document
+            .querySelectorAll(".reveal")
+            .forEach((el) => el.classList.add("show"));
+        }, 120);
+      });
+    </script>
+  </body>
+</html>
