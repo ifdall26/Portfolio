@@ -698,7 +698,7 @@
 
             <!-- Project 4: RakBukuKu -->
             <article class="project" data-category="web">
-              <img src="4.png" alt="Inventory System" />
+              <img src="4.png" alt="BookShelf app" />
               <div class="meta">
                 <h4>RakBukuKu</h4>
                 <p>BookShelf App</p>
@@ -715,7 +715,33 @@
                   <a
                     class="btn-outline"
                     href="#"
-                    onclick="openModal(event,'inventory')"
+                    onclick="openModal(event,'rakbuku')"
+                    >Details</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 4: PikNik -->
+            <article class="project" data-category="web">
+              <img src="5.png" alt="PikNik" />
+              <div class="meta">
+                <h4>PikNik</h4>
+                <p>Sustainable Social, Cultural, Tourism and Environment</p>
+              </div>
+              <div class="overlay">
+                <div class="links">
+                  <a
+                    class="btn"
+                    href="https://pik-nik.vercel.app/"
+                    target="_blank"
+                    rel="noopener"
+                    >Live Demo</a
+                  >
+                  <a
+                    class="btn-outline"
+                    href="#"
+                    onclick="openModal(event,'piknik')"
                     >Details</a
                   >
                 </div>
@@ -1016,6 +1042,16 @@
         } else if (id === "inventory") {
           content.innerHTML = `
           <h3>Inventory Management (Magang: PT Semen Padang)</h3>
+          <p>Sistem manajemen gudang & permintaan barang dengan fitur tracking barang masuk/keluar, filter lokasi, dan role-based access. Teknologi: PHP, MySQL, Bootstrap.</p>
+        `;
+        } else if (id === "rakbuku") {
+          content.innerHTML = `
+          <h3>RakBukuKu (SIB Dicoding Project)</h3>
+          <p>Sistem manajemen gudang & permintaan barang dengan fitur tracking barang masuk/keluar, filter lokasi, dan role-based access. Teknologi: PHP, MySQL, Bootstrap.</p>
+        `;
+        } else if (id === "piknik") {
+          content.innerHTML = `
+          <h3>PinNik (SIB Dicoding Project)</h3>
           <p>Sistem manajemen gudang & permintaan barang dengan fitur tracking barang masuk/keluar, filter lokasi, dan role-based access. Teknologi: PHP, MySQL, Bootstrap.</p>
         `;
         } else {
