@@ -789,7 +789,7 @@
 
             <!-- Project 7: Figma PikNik -->
             <article class="project" data-category="uiux">
-              <img src="figma-piknik.png" alt="PikNik" />
+              <img src="figma-piknik.png" alt="figma design PikNik" />
               <div class="meta">
                 <h4>Figma Design PikNik</h4>
                 <p>
@@ -810,6 +810,35 @@
                     class="btn-outline"
                     href="#"
                     onclick="openModal(event,'figma-piknik')"
+                    >Details</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 8: Figma PikNik -->
+            <article class="project" data-category="uiux">
+              <img src="figma-photobox.png" alt="figma design photobox" />
+              <div class="meta">
+                <h4>Figma Design Photobox App</h4>
+                <p>
+                  Figma Design - Web camera app with collage builder and
+                  download option.
+                </p>
+              </div>
+              <div class="overlay">
+                <div class="links">
+                  <a
+                    class="btn"
+                    href="https://www.figma.com/design/vEqTSC6Z6eF5XHwLXL2nbl/Untitled?node-id=0-1&p=f&t=w10ZK1jGkZt4tVAl-0"
+                    target="_blank"
+                    rel="noopener"
+                    >Live Demo</a
+                  >
+                  <a
+                    class="btn-outline"
+                    href="#"
+                    onclick="openModal(event,'figma-photobox')"
                     >Details</a
                   >
                 </div>
@@ -1131,6 +1160,11 @@
           content.innerHTML = `
           <h3>Figma Design - PinNik (SIB Dicoding Project)</h3>
           <p>Desain Figma - Aplikasi web travel platform interaktif untuk menikmati keindahan destinasi wisata di seluruh Indonesia. Pengguna dapat melihat destinasi, daftar populer, informasi, serta bagian “Tentang Kami” dan kontak.</p>
+        `;
+        } else if (id === "figma-photobox") {
+          content.innerHTML = `
+          <h3>Figma Design - Photobox</h3>
+          <p>Desain Figma - Aplikasi kamera web untuk mengambil foto, menyusun kolase, dan mengunduh hasilnya. Teknologi: Vanilla JS, Canvas API.</p>
         `;
         } else {
           content.innerHTML = `<p>Detail proyek tidak tersedia.</p>`;
