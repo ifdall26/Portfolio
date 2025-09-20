@@ -754,6 +754,35 @@
                 </div>
               </div>
             </article>
+
+            <!-- Project 5: Figma Inventory System -->
+            <article class="project" data-category="uiux">
+              <img src="figma-inventory-management.png" alt="PikNik" />
+              <div class="meta">
+                <h4>Figma Design Inventory Management</h4>
+                <p>
+                  Figma Design - Web app for warehouse management & request
+                  workflows (internship project).
+                </p>
+              </div>
+              <div class="overlay">
+                <div class="links">
+                  <a
+                    class="btn"
+                    href="https://www.figma.com/design/rPymHjpS4Gm8m5T6QReMQc/Untitled?node-id=1-2&t=oMmxIPeqafCx83HU-0"
+                    target="_blank"
+                    rel="noopener"
+                    >Live Demo</a
+                  >
+                  <a
+                    class="btn-outline"
+                    href="#"
+                    onclick="openModal(event,'figma-inventory')"
+                    >Details</a
+                  >
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -1060,6 +1089,11 @@
           content.innerHTML = `
           <h3>PinNik (SIB Dicoding Project)</h3>
           <p>Aplikasi web travel platform interaktif untuk menikmati keindahan destinasi wisata di seluruh Indonesia. Pengguna dapat melihat destinasi, daftar populer, informasi, serta bagian “Tentang Kami” dan kontak.</p>
+        `;
+        } else if (id === "figma-inventory") {
+          content.innerHTML = `
+          <h3>Figma Design - Inventory Management (Magang: PT Semen Padang)</h3>
+          <p>Desain Figma - Sistem manajemen gudang & permintaan barang dengan fitur tracking barang masuk/keluar, filter lokasi, dan role-based access. Teknologi: PHP, MySQL, Bootstrap.</p>
         `;
         } else {
           content.innerHTML = `<p>Detail proyek tidak tersedia.</p>`;
